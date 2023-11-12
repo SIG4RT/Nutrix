@@ -17,27 +17,27 @@ public class MealController {
     }
 
 
-    @GetMapping("/allMeals")
+    @GetMapping("/allmeals")
     public List<Meal> getAll() {
         return service.getAll();
     }
 
-    @GetMapping("/Meal/{id}")
+    @GetMapping("/meal/{id}")
     public Meal getOne(@PathVariable long id) {
         return service.getById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/Meal")
+    @GetMapping("/meal")
     public Meal createNew(@RequestBody Meal Meal) {
         return service.createNew(Meal);
     }
 
-    @PutMapping("/Meal/{id}")
+    @PutMapping("/meal/{id}")
     public String createOrReplace(@RequestBody Meal Meal, @PathVariable long id) {
         return service.createOrReplace(Meal, id);
     }
 
-    @DeleteMapping("/Meal/{id}")
+    @DeleteMapping("/meal/{id}")
     public String delete(@PathVariable long id) {
         service.delete(id);
         return "Successfully deleted Meal with id " + id;
