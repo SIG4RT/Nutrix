@@ -27,7 +27,7 @@ public class MealController {
         return service.getById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/meal")
+    @PostMapping("/meal")
     public Meal createNew(@RequestBody Meal Meal) {
         return service.createNew(Meal);
     }
@@ -42,5 +42,4 @@ public class MealController {
         service.delete(id);
         return "Successfully deleted Meal with id " + id;
     }
-
 }
