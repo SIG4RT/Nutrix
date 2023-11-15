@@ -1,5 +1,7 @@
-package io.everyonecodes.Nutrix;
+package io.everyonecodes.Nutrix.service;
 
+import io.everyonecodes.Nutrix.Meal;
+import io.everyonecodes.Nutrix.repository.MealRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

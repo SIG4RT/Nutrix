@@ -1,8 +1,6 @@
 package io.everyonecodes.Nutrix;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,26 +15,19 @@ public class Meal {
 
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
 
     private String name;
-    private int calories;
-    private double carbs;
-    private double protein;
-    private double fat;
+    private Integer calories;
+    private Double carbs;
+    private Double protein;
+    private Double fat;
 
-//    private List<Ingredient> ingredients;
-//
-//    public Meal(String name, int calories, double carbs, double protein, double fat, List<Ingredient> ingredients) {
-//        this.name = name;
-//        this.calories = calories;
-//        this.carbs = carbs;
-//        this.protein = protein;
-//        this.fat = fat;
-//        this.ingredients = ingredients;
-//    }
+//    @ManyToOne
+//    @JoinColumn(name = "category_id")
+//    private Category category;
 
-    public Meal(String name, int calories, double carbs, double protein, double fat) {
+    public Meal(String name, Integer calories, Double carbs, Double protein, Double fat) {
         this.name = name;
         this.calories = calories;
         this.carbs = carbs;

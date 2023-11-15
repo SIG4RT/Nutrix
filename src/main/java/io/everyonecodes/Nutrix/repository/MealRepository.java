@@ -1,5 +1,6 @@
-package io.everyonecodes.Nutrix;
+package io.everyonecodes.Nutrix.repository;
 
+import io.everyonecodes.Nutrix.Meal;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

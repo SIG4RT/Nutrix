@@ -1,5 +1,7 @@
-package io.everyonecodes.Nutrix;
+package io.everyonecodes.Nutrix.controller;
 
+import io.everyonecodes.Nutrix.Meal;
+import io.everyonecodes.Nutrix.service.MealService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
