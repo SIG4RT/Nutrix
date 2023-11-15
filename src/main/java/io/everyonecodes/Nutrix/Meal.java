@@ -23,15 +23,8 @@ public class Meal {
     private Double protein;
     private Double fat;
 
-//    @ManyToOne
-//    @JoinColumn(name = "category_id")
-//    private Category category;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
-    public Meal(String name, Integer calories, Double carbs, Double protein, Double fat) {
-        this.name = name;
-        this.calories = calories;
-        this.carbs = carbs;
-        this.protein = protein;
-        this.fat = fat;
-    }
 }

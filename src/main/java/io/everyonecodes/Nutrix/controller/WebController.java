@@ -1,4 +1,6 @@
-package io.everyonecodes.Nutrix;
+package io.everyonecodes.Nutrix.controller;
+
+import io.everyonecodes.Nutrix.service.MealService;
 
 public class WebController {
 
