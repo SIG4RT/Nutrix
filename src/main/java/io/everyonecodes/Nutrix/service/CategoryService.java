@@ -5,6 +5,7 @@ import io.everyonecodes.Nutrix.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryService {
@@ -20,8 +21,28 @@ public class CategoryService {
         return repository.findAll();
     }
 
+    public Optional<Category> getById(long id) {
+        return repository.findById(id);
+    }
+
     public Category createNew(Category category) {
         return repository.save(category);
     }
 
+    public Category createOrReplace(Category category, long id) {
+
+        var oCategory = repository.findById(id);
+
+        if (oCategory.isPresent()) {
+            var oldCategory = oCategory.get();
+            oldCategory.setName(category.getName());
+            return repository.save(oldCategory);
+        } else {
+            return repository.save(category);
+        }
+    }
+
+    public void delete(long id) {
+        repository.deleteById(id);
+    }
 }

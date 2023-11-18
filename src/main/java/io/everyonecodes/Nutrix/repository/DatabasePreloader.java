@@ -37,5 +37,4 @@ public class DatabasePreloader {
             mealRepository.saveAll(meals);
         };
     }
-
 }

@@ -27,21 +27,23 @@ public class MealService {
         return repository.save(meal);
     }
 
-    public String createOrReplace(Meal newMeal, long id) {
-
+    public Meal createOrReplace(Meal newMeal, long id) {
         Optional<Meal> oOldMeal = repository.findById(id);
-
         if (oOldMeal.isPresent()) {
-            repository.save(oOldMeal.get());
-            return "Successfully replaced existing Meal with id " + id;
+            var oldMeal = oOldMeal.get();
+            oldMeal.setCalories(newMeal.getCalories());
+            oldMeal.setName(newMeal.getName());
+            oldMeal.setProtein(newMeal.getProtein());
+            oldMeal.setCarbs(newMeal.getCarbs());
+            oldMeal.setFat(newMeal.getFat());
+            oldMeal.setCategory(newMeal.getCategory());
+            return repository.save(oldMeal);
         } else {
-            repository.save(newMeal);
-            return "No existing entry found. Successfully created new Meal with id " + id;
+            return repository.save(newMeal);
         }
     }
 
     public void delete(long id) {
         repository.deleteById(id);
     }
-
 }

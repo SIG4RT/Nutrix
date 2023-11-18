@@ -25,18 +25,18 @@ public class MealController {
     }
 
     @GetMapping("/meal/{id}")
-    public Meal getOne(@PathVariable long id) {
+    public Meal getById(@PathVariable long id) {
         return service.getById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping("/meal")
-    public Meal createNew(@RequestBody Meal Meal) {
-        return service.createNew(Meal);
+    public Meal createNew(@RequestBody Meal meal) {
+        return service.createNew(meal);
     }
 
     @PutMapping("/meal/{id}")
-    public String createOrReplace(@RequestBody Meal Meal, @PathVariable long id) {
-        return service.createOrReplace(Meal, id);
+    public Meal createOrReplace(@RequestBody Meal meal, @PathVariable long id) {
+        return service.createOrReplace(meal, id);
     }
 
     @DeleteMapping("/meal/{id}")
