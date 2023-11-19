@@ -46,4 +46,9 @@ public class MealService {
     public void delete(long id) {
         repository.deleteById(id);
     }
+
+    public List<Meal> getLast20Meals() {
+        return repository.findTop20ByOrderByTimestampDesc();
+    }
+
 }

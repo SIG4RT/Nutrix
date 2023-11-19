@@ -29,6 +29,11 @@ public class MealController {
         return service.getById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("recentmeals")
+    public List<Meal> getLast20Meals() {
+        return service.getLast20Meals();
+    }
+
     @PostMapping("/meal")
     public Meal createNew(@RequestBody Meal meal) {
         return service.createNew(meal);
