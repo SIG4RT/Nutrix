@@ -2,10 +2,7 @@ package io.everyonecodes.Nutrix;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -34,5 +31,13 @@ public class Meal {
     @JoinColumn(name = "category_id")
     private Category category;
 
+//    @JsonIgnore
+    private Boolean isSaved;
 
+//    @PrePersist
+//    void preInsert() {
+//        if (this.isSaved == null) {
+//            this.isSaved = false;
+//        }
+//    }
 }

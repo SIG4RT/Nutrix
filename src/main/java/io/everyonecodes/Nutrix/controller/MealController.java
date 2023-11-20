@@ -34,6 +34,11 @@ public class MealController {
         return service.getLast20Meals();
     }
 
+    @GetMapping("/savedmeals")
+    public List<Meal> getSavedMeals() {
+        return service.getSavedMeals();
+    }
+
     @PostMapping("/meal")
     public Meal createNew(@RequestBody Meal meal) {
         return service.createNew(meal);

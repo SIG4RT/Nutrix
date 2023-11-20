@@ -11,4 +11,6 @@ public interface MealRepository extends JpaRepository<Meal, Long> {
 
     List<Meal> findTop20ByOrderByTimestampDesc();
 
+    List<Meal> findByIsSavedTrue();
+
 }

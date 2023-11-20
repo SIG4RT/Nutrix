@@ -23,6 +23,14 @@ public class MealService {
         return repository.findById(id);
     }
 
+    public List<Meal> getLast20Meals() {
+        return repository.findTop20ByOrderByTimestampDesc();
+    }
+
+    public List<Meal> getSavedMeals() {
+        return repository.findByIsSavedTrue();
+    }
+
     public Meal createNew(Meal meal) {
         return repository.save(meal);
     }
@@ -46,9 +54,4 @@ public class MealService {
     public void delete(long id) {
         repository.deleteById(id);
     }
-
-    public List<Meal> getLast20Meals() {
-        return repository.findTop20ByOrderByTimestampDesc();
-    }
-
 }
