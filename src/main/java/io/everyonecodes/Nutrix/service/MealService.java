@@ -27,8 +27,8 @@ public class MealService {
         return repository.findTop20ByOrderByTimestampDesc();
     }
 
-    public List<Meal> getSavedMeals() {
-        return repository.findByIsSavedTrue();
+    public List<Meal> getFavorites() {
+        return repository.findByIsFavoriteTrue();
     }
 
     public Meal createOne(Meal meal) {

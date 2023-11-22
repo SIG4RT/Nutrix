@@ -34,9 +34,9 @@ public class MealController {
         return service.getLast20Meals();
     }
 
-    @GetMapping("/savedmeals")
-    public List<Meal> getSavedMeals() {
-        return service.getSavedMeals();
+    @GetMapping("/favoritemeals")
+    public List<Meal> getFavorites() {
+        return service.getFavorites();
     }
 
     @PostMapping("/meal")

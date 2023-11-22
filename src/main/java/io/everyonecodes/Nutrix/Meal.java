@@ -30,16 +30,8 @@ public class Meal {
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-
     private Category category;
 
-//    @JsonIgnore
-    private Boolean isSaved;
+    private Boolean isFavorite;
 
-//    @PrePersist
-//    void preInsert() {
-//        if (this.isSaved == null) {
-//            this.isSaved = false;
-//        }
-//    }
 }
