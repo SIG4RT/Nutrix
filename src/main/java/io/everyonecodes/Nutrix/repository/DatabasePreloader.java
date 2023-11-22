@@ -2,6 +2,8 @@ package io.everyonecodes.Nutrix.repository;
 
 import io.everyonecodes.Nutrix.Category;
 import io.everyonecodes.Nutrix.Meal;
+import io.everyonecodes.Nutrix.service.CategoryService;
+import io.everyonecodes.Nutrix.service.MealService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,8 +15,9 @@ import java.util.List;
 @Configuration
 public class DatabasePreloader {
 
+
     @Bean
-    CommandLineRunner initDatabase(MealRepository mealRepository, CategoryRepository categoryRepository) {
+    CommandLineRunner initDatabase(MealService mealService, CategoryService categoryService) {
         return args -> {
 
             Category breakfast = new Category(null, "breakfast",null);
@@ -31,8 +34,8 @@ public class DatabasePreloader {
                         new Meal(null, "Cereal", 400, 50.0, 2.0, 8.0, LocalDateTime.now(), breakfast, true)
             ));
 
-            categoryRepository.saveAll(List.of(breakfast, lunch, dinner, snacks));
-            mealRepository.saveAll(meals);
+            categoryService.createAll(List.of(breakfast, lunch, dinner, snacks));
+            mealService.createAll(meals);
         };
     }
 }
