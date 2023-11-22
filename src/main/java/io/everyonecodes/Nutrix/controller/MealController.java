@@ -40,8 +40,13 @@ public class MealController {
     }
 
     @PostMapping("/meal")
-    public Meal createNew(@RequestBody Meal meal) {
-        return service.createNew(meal);
+    public Meal createOne(@RequestBody Meal meal) {
+        return service.createOne(meal);
+    }
+
+    @PostMapping("/meals")
+    public List<Meal> createAll(@RequestBody List<Meal> meals) {
+        return service.createAll(meals);
     }
 
     @PutMapping("/meal/{id}")

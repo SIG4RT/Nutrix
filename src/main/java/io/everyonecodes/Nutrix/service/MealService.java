@@ -31,8 +31,12 @@ public class MealService {
         return repository.findByIsSavedTrue();
     }
 
-    public Meal createNew(Meal meal) {
+    public Meal createOne(Meal meal) {
         return repository.save(meal);
+    }
+
+    public List<Meal> createAll(List<Meal> meals) {
+        return repository.saveAll(meals);
     }
 
     public Meal createOrReplace(Meal newMeal, long id) {

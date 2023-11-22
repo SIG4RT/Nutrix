@@ -25,8 +25,12 @@ public class CategoryService {
         return repository.findById(id);
     }
 
-    public Category createNew(Category category) {
+    public Category createOne(Category category) {
         return repository.save(category);
+    }
+
+    public List<Category> createAll(List<Category> categories) {
+        return repository.saveAll(categories);
     }
 
     public Category createOrReplace(Category category, long id) {
