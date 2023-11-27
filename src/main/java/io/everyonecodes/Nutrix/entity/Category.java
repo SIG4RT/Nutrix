@@ -1,4 +1,4 @@
-package io.everyonecodes.Nutrix;
+package io.everyonecodes.Nutrix.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
@@ -27,5 +27,9 @@ public class Category {
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonBackReference
     private List<Meal> meals = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "overview_date")
+    private Overview overview;
 
 }

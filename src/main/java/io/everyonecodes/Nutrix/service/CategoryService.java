@@ -1,6 +1,6 @@
 package io.everyonecodes.Nutrix.service;
 
-import io.everyonecodes.Nutrix.Category;
+import io.everyonecodes.Nutrix.entity.Category;
 import io.everyonecodes.Nutrix.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 

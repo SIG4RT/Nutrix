@@ -1,4 +1,4 @@
-package io.everyonecodes.Nutrix;
+package io.everyonecodes.Nutrix.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
