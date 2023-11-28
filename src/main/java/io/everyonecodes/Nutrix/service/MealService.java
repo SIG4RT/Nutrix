@@ -48,7 +48,7 @@ public class MealService {
             oldMeal.setProtein(newMeal.getProtein());
             oldMeal.setCarbs(newMeal.getCarbs());
             oldMeal.setFat(newMeal.getFat());
-            oldMeal.setCategory(newMeal.getCategory());
+            oldMeal.setCategories(newMeal.getCategories());
             return repository.save(oldMeal);
         } else {
             return repository.save(newMeal);

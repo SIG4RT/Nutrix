@@ -24,12 +24,7 @@ public class Category {
     @Column(unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "categories")
     @JsonBackReference
     private List<Meal> meals = new ArrayList<>();
-
-    @ManyToOne
-    @JoinColumn(name = "overview_date")
-    private Overview overview;
-
 }

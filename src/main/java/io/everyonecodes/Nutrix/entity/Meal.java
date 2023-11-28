@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -28,10 +30,32 @@ public class Meal {
     @Column(nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime timestamp = LocalDateTime.now();
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
+    @ManyToMany
+    @JoinTable(
+            name = "meal_category",
+            joinColumns = @JoinColumn(name = "meal_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    private List<Category> categories = new ArrayList<>();
 
     private Boolean isFavorite;
 
+    @Override
+    public String toString() {
+        var day = timestamp.getDayOfMonth();
+        var month = timestamp.getMonth();
+        var year = timestamp.getYear();
+        var dot = ".";
+        return "{Meal " +
+                "id = " + id +
+                ", name = " + name +
+                ", calories = " + calories +
+                ", carbs = " + carbs +
+                ", protein = " + protein +
+                ", fat = " + fat +
+                ", creation date = " + day + dot + month + dot + year  +
+                ", categories = " + categories +
+                ", favorite = " + isFavorite +
+                "}";
+    }
 }
