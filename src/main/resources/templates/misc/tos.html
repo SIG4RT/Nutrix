@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en", xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+
+</head>
+
+<body>
+
+    <div th:insert="/fragments/navbar :: navbar"></div>
+
+    <div class="container mt-5">
+        <div class="p-5 my-4 bg-light rounded-5">
+            <div class="text-center">
+                <h1>Terms of Service</h1>
+           </div>
+
+            <p class="lead text-center p-5">No crime on this platform plz.  If you want to commit a crime please reference 
+                <a href="https://www.polizei.gv.at/" class="text-success" target="_blank">This Friendly Website</a>, thank you.
+            </p>
+
+            <p class="text-center">
+                <a href="https://www.google.com" class="btn btn-success btn-lg">Fuck Off Button</a>
+            </p>
+
+        </div>
+    </div>
+    
+</body>
+</html>

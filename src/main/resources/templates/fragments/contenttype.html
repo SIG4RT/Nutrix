@@ -1,0 +1,61 @@
+<!-- Checks device type and changes format accordingly -->
+<!-- Placeholder represents a list of meals -->
+
+<div th:fragment="meals (PLACEHOLDER)">
+    <div class="mobile-content">
+        <div class="col-12 col-md-6 col-lg-4" th:each="meal: ${PLACEHOLDER}">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${meal.name}"></h5>
+                    <p class="card-text">
+                    Calories: <span th:text="${meal.calories}"></span><br>
+                    Carbs: <span th:text="${meal.carbs}"></span><br>
+                    Protein: <span th:text="${meal.protein}"></span><br>
+                    Fat: <span th:text="${meal.fat}"></span><br>
+                    Favorite: <span th:text="${meal.isFavorite}"></span><br>
+                    Category ID's: <span th:each="category, iterStat : ${meal.categories}">
+                        <span th:text="${category.id} + ${!iterStat.last ? ', ' : ''}"></span>
+                    </span><br>
+                    Creation Date: <span th:text="${#temporals.format(meal.timestamp, 'dd-MM-yyyy HH:mm:ss')}"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="desktop-content">
+            <table class="table table-light table-responsive">
+                <thead>
+                    <tr class="table-success">
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Calories</th>
+                        <th scope="col">Carbs</th>
+                        <th scope="col">Protein</th>
+                        <th scope="col">Fat</th>
+                        <th scope="col">Favorite</th>
+                        <th scope="col">Category ID's</th>
+                        <th scope="col">Creation Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="meal: ${PLACEHOLDER}">
+                        <td th:text="${meal.id}"></td>
+                        <td th:text="${meal.name}"></td>
+                        <td th:text="${meal.calories}"></td>
+                        <td th:text="${meal.carbs}"></td>
+                        <td th:text="${meal.protein}"></td>
+                        <td th:text="${meal.fat}"></td>
+                        <td th:text="${meal.isFavorite}"></td>
+                        <td>
+                            <span th:each="category, iterStat : ${meal.categories}">
+                                <span th:text="${category.id} + ${!iterStat.last ? ', ' : ''}"></span>
+                            </span>
+                        </td>
+                        <td th:text="${#temporals.format(meal.timestamp, 'dd-MM-yyyy HH:mm')}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
