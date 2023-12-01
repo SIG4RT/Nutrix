@@ -34,8 +34,9 @@ public class DatabasePreloader {
                         new Meal(null, "Cereal", 400, 50.0, 2.0, 8.0, LocalDateTime.now(), new ArrayList<>(List.of(breakfast)), true)
             ));
 
+            List<Category> categories = List.of(breakfast, lunch, dinner, snacks);
 
-            categoryService.createAll(List.of(breakfast, lunch, dinner, snacks));
+            categoryService.createAll(categories);
             mealService.createAll(meals);
         };
     }

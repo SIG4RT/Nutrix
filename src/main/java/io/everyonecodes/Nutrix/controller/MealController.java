@@ -55,8 +55,7 @@ public class MealController {
     }
 
     @DeleteMapping("/meal/{id}")
-    public String delete(@PathVariable long id) {
+    public void delete(@PathVariable long id) {
         service.delete(id);
-        return "Successfully deleted Meal with id " + id;
     }
 }
