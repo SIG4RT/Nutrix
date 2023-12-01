@@ -1,14 +1,11 @@
 package io.everyonecodes.Nutrix.controller;
 
-import io.everyonecodes.Nutrix.entity.Meal;
 import io.everyonecodes.Nutrix.service.CategoryService;
 import io.everyonecodes.Nutrix.service.MealService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.Optional;
 
 @Controller
 public class WebController {
@@ -28,32 +25,50 @@ public class WebController {
         return mav;
     }
 
+    // ----- Meal Mappings -----
+
     @GetMapping("/allmeals")
-    public ModelAndView getAll() {
+    public ModelAndView getAllMeals() {
         ModelAndView mav = new ModelAndView("allmeals");
         mav.addObject("allMeals", mealService.getAll());
         return mav;
     }
 
     @GetMapping("/favoritemeals")
-    public ModelAndView getFavorites() {
+    public ModelAndView getFavoriteMeals() {
         ModelAndView mav = new ModelAndView("favoritemeals");
         mav.addObject("favoriteMeals", mealService.getFavorites());
         return mav;
     }
 
     @GetMapping("/recentmeals")
-    public ModelAndView getRecent() {
+    public ModelAndView getRecentMeals() {
         ModelAndView mav = new ModelAndView("recentmeals");
         mav.addObject("recentMeals", mealService.getLast20Meals());
         return mav;
     }
 
     @GetMapping("/meal/{id}")
-    public ModelAndView getById (@PathVariable Long id) {
-        Optional<Meal> oMeal = mealService.getById(id);
+    public ModelAndView getMealById (@PathVariable Long id) {
         ModelAndView mav = new ModelAndView("meal");
-        mav.addObject("meal", oMeal.get());
+        mav.addObject("meal", mealService.getById(id).get());
+        return mav;
+    }
+
+    // ----- Category Mappings -----
+
+    @GetMapping("/categories")
+    public ModelAndView getAllCategories() {
+        ModelAndView mav = new ModelAndView("categories");
+        mav.addObject("categories", categoryService.getAll());
+        return mav;
+    }
+
+    @GetMapping("/category/{id}")
+    public ModelAndView getCategoryById(@PathVariable Long id) {
+        ModelAndView mav = new ModelAndView("category");
+        mav.addObject("category", categoryService.getById(id).get());
+        mav.addObject("mealsInCategory", mealService.getMealsByCategoryId(id));
         return mav;
     }
 
@@ -70,5 +85,4 @@ public class WebController {
         ModelAndView mav = new ModelAndView("misc/privacypolicy");
         return mav;
     }
-
 }

@@ -13,4 +13,6 @@ public interface MealRepository extends JpaRepository<Meal, Long> {
 
     List<Meal> findByIsFavoriteTrue();
 
+    List<Meal> findByCategoriesId(Long categoryId);
+
 }

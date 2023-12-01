@@ -29,6 +29,11 @@ public class MealController {
         return service.getById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/mealcategory")
+    public List<Meal> getMealsByCategoryId(@PathVariable Long categoryId) {
+        return service.getMealsByCategoryId(categoryId);
+    }
+
     @GetMapping("recentmeals")
     public List<Meal> getLast20Meals() {
         return service.getLast20Meals();

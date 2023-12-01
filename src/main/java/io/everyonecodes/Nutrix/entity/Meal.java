@@ -39,23 +39,4 @@ public class Meal {
     private List<Category> categories = new ArrayList<>();
 
     private Boolean isFavorite;
-
-    @Override
-    public String toString() {
-        var day = timestamp.getDayOfMonth();
-        var month = timestamp.getMonth();
-        var year = timestamp.getYear();
-        var dot = ".";
-        return "{Meal " +
-                "id = " + id +
-                ", name = " + name +
-                ", calories = " + calories +
-                ", carbs = " + carbs +
-                ", protein = " + protein +
-                ", fat = " + fat +
-                ", creation date = " + day + dot + month + dot + year  +
-                ", categories = " + categories +
-                ", favorite = " + isFavorite +
-                "}";
-    }
 }

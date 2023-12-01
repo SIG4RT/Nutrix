@@ -14,8 +14,6 @@ import java.util.List;
 
 @Configuration
 public class DatabasePreloader {
-
-
     @Bean
     CommandLineRunner initDatabase(MealService mealService, CategoryService categoryService) {
         return args -> {

@@ -23,6 +23,10 @@ public class MealService {
         return repository.findById(id);
     }
 
+    public List<Meal> getMealsByCategoryId(Long categoryId) {
+        return repository.findByCategoriesId(categoryId);
+    }
+
     public List<Meal> getLast20Meals() {
         return repository.findTop20ByOrderByTimestampDesc();
     }
