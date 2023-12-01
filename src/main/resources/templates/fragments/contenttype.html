@@ -1,6 +1,5 @@
 <!-- Checks device type and changes format accordingly -->
 <!-- Placeholder represents a list of meals -->
-
 <div th:fragment="meals (PLACEHOLDER)">
     <div class="mobile-content">
         <div class="col-12 col-md-6 col-lg-4" th:each="meal: ${PLACEHOLDER}">
@@ -18,6 +17,20 @@
                     </span><br>
                     Creation Date: <span th:text="${#temporals.format(meal.timestamp, 'dd-MM-yyyy HH:mm:ss')}"></span>
                     </p>
+
+
+                    <!-- hidden delete method + Alert for confirmation-->
+
+                    <form th:action="@{/api/meal/{id} (id=${meal.id})}" method="post">
+                        <input type="hidden" name="_method" value="delete"/>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+
+                    <form>
+                        <button class="btn btn-secondary" th:text="Edit"></button>
+                    </form>
+
+
                 </div>
             </div>
         </div>
@@ -36,6 +49,7 @@
                         <th scope="col">Favorite</th>
                         <th scope="col">Category ID's</th>
                         <th scope="col">Creation Date</th>
+                        <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,6 +67,10 @@
                             </span>
                         </td>
                         <td th:text="${#temporals.format(meal.timestamp, 'dd-MM-yyyy HH:mm')}"></td>
+                        <td>
+                            <button class="btn btn-danger" th:id="'deleteBtn-' + ${meal.id}">Delete</button>
+                            <button class="btn btn-secondary">Edit</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
