@@ -18,13 +18,40 @@
 
 
 <!-- Total Stats Section -->
-<div class="container mt-4 text-center">
+<div class="container mt-4 justify-content-center text-center">
     <div class="p-5 my-4 bg-light rounded-5">
         <h1 class="display-4" th:text="${category.name.substring(0,1).toUpperCase() + category.name.substring(1,category.name.length).toLowerCase()}"></h1>
-        <p class="lead">Total Calories: <span class="font-weight-bold" th:text="${totalCalories}"></span></p>
 
-        <div class="row mt-4">
+
+        <!-- <div class="row mt-2 justify-content-center">
             <div class="col-md-4">
+                <div class="card bg-light shadow">
+                    <div class="card-body">
+                        <h5 class="card-title text-secondary">Total Calories</h5>
+                        <p class="card-text">
+                            <span class="font-weight-bold" th:text="${totalCalories} + g"></span>
+                        </p>
+                    </div>
+                </div>
+            </div> -->
+
+
+
+        <div class="row mt-3 justify-content-center">
+
+            <div class="col-md-3">
+                <div class="card bg-light shadow">
+                    <div class="card-body">
+                        <h5 class="card-title text-secondary">Total Calories</h5>
+                        <p class="card-text">
+                            <span class="font-weight-bold" th:text="${totalCalories} + g"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="col-md-3">
                 <div class="card bg-light shadow">
                     <div class="card-body">
                         <h5 class="card-title text-secondary">Carbs</h5>
@@ -35,7 +62,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card bg-light shadow">
                     <div class="card-body">
                         <h5 class="card-title text-secondary">Protein</h5>
@@ -46,55 +73,52 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card bg-light shadow">
                     <div class="card-body">
                         <h5 class="card-title text-secondary">Fat</h5>
                         <p class="card-text">
                             <span class="font-weight-bold" th:text="${totalFat} + g"></span>
                         </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 <!-- Meals Section -->
-<div class="container mt-4">
-    <div class="row">
-        <div class="col-12">
-            <div class="table-responsive">
-                <table class="table table-striped table-hover">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>Name</th>
-                            <th>Calories</th>
-                            <th>Carbs</th>
-                            <th>Protein</th>
-                            <th>Fat</th>
-                            <th>Last Added</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="meal: ${mealsInCategory}">
-                            <td th:text="${meal.name}"></td>
-                            <td th:text="${meal.calories}"></td>
-                            <td th:text="${meal.carbs}"></td>
-                            <td th:text="${meal.protein}"></td>
-                            <td th:text="${meal.fat}"></td>
-                            <td th:text="${#temporals.format(meal.lastAdded, 'dd-MM-yyyy HH:mm')}"></td>
-                            <td>
-                                <button class="btn btn-danger btn-sm" th:id="'deleteBtn-' + ${meal.id}">Delete</button>
-                                <button class="btn btn-secondary btn-sm">Edit</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Name</th>
+                                <th class="text-center">Calories</th>
+                                <th class="text-end">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="meal: ${mealsInCategory}">
+                                <td th:text="${meal.name}"></td>
+                                <td th:text="${meal.calories}" class="text-center"></td>
+                                <td class="text-end">
+                                    <button class="btn btn-danger btn-sm" th:id="'deleteBtn-' + ${meal.id}">Delete</button>
+                                    <button class="btn btn-secondary btn-sm">Edit</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
+
+
 </div>
 
 
