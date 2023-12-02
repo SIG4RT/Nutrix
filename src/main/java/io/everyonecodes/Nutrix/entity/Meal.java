@@ -28,7 +28,7 @@ public class Meal {
     private Double fat;
 
     @Column(nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private LocalDateTime timestamp = LocalDateTime.now();
+    private LocalDateTime lastAdded = LocalDateTime.now();
 
     @ManyToMany
     @JoinTable(

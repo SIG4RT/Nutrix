@@ -69,6 +69,10 @@ public class WebController {
         ModelAndView mav = new ModelAndView("category");
         mav.addObject("category", categoryService.getById(id).get());
         mav.addObject("mealsInCategory", mealService.getMealsByCategoryId(id));
+        mav.addObject("totalCalories", mealService.getTotalCaloriesByCategoryId(id));
+        mav.addObject("totalCarbs", mealService.getTotalCarbsByCategoryId(id));
+        mav.addObject("totalProtein", mealService.getTotalProteinByCategoryId(id));
+        mav.addObject("totalFat", mealService.getTotalFatByCategoryId(id));
         return mav;
     }
 

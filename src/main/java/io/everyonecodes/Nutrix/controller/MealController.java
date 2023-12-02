@@ -30,7 +30,7 @@ public class MealController {
     }
 
     @GetMapping("/mealcategory")
-    public List<Meal> getMealsByCategoryId(@PathVariable Long categoryId) {
+    public List<Meal> getMealsByCategoryId(@PathVariable long categoryId) {
         return service.getMealsByCategoryId(categoryId);
     }
 

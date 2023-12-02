@@ -23,12 +23,12 @@ public class MealService {
         return repository.findById(id);
     }
 
-    public List<Meal> getMealsByCategoryId(Long categoryId) {
+    public List<Meal> getMealsByCategoryId(long categoryId) {
         return repository.findByCategoriesId(categoryId);
     }
 
     public List<Meal> getLast20Meals() {
-        return repository.findTop20ByOrderByTimestampDesc();
+        return repository.findTop20ByOrderByLastAddedDesc();
     }
 
     public List<Meal> getFavorites() {
@@ -61,5 +61,20 @@ public class MealService {
 
     public void delete(long id) {
         repository.deleteById(id);
+    }
+
+
+    public Double getTotalCaloriesByCategoryId(long id) {
+        return repository.getTotalCaloriesByCategoryId(id);
+    }
+
+    public Double getTotalCarbsByCategoryId(long id) {
+        return repository.getTotalCarbsByCategoryId(id);
+    }
+    public Double getTotalProteinByCategoryId(long id) {
+        return repository.getTotalProteinByCategoryId(id);
+    }
+    public Double getTotalFatByCategoryId(long id) {
+        return repository.getTotalFatByCategoryId(id);
     }
 }
