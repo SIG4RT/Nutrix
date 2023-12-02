@@ -23,28 +23,14 @@
         <h1 class="display-4" th:text="${category.name.substring(0,1).toUpperCase() + category.name.substring(1,category.name.length).toLowerCase()}"></h1>
 
 
-        <!-- <div class="row mt-2 justify-content-center">
-            <div class="col-md-4">
-                <div class="card bg-light shadow">
-                    <div class="card-body">
-                        <h5 class="card-title text-secondary">Total Calories</h5>
-                        <p class="card-text">
-                            <span class="font-weight-bold" th:text="${totalCalories} + g"></span>
-                        </p>
-                    </div>
-                </div>
-            </div> -->
-
-
-
         <div class="row mt-3 justify-content-center">
 
             <div class="col-md-3">
                 <div class="card bg-light shadow">
                     <div class="card-body">
-                        <h5 class="card-title text-secondary">Total Calories</h5>
+                        <h5 class="card-title text-secondary">Calories</h5>
                         <p class="card-text">
-                            <span class="font-weight-bold" th:text="${totalCalories} + g"></span>
+                            <span class="font-weight-bold" th:text="${totalCalories}"></span>
                         </p>
                     </div>
                 </div>
@@ -106,10 +92,24 @@
                             <tr th:each="meal: ${mealsInCategory}">
                                 <td th:text="${meal.name}"></td>
                                 <td th:text="${meal.calories}" class="text-center"></td>
+
+
                                 <td class="text-end">
-                                    <button class="btn btn-danger btn-sm" th:id="'deleteBtn-' + ${meal.id}">Delete</button>
-                                    <button class="btn btn-secondary btn-sm">Edit</button>
+                                      <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                          Option
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-dark">
+                                          <li><a class="dropdown-item" href="#" th:id="'deleteBtn-' + ${meal.id}">Delete</a></li>
+                                          <li><a class="dropdown-item" href="#">Edit</a></li>
+                                          <li><hr class="dropdown-divider"></li>
+                                          <li><a class="dropdown-item" href="#">View Meal</a></li>
+                                        </ul>
+                                      </div>
+
                                 </td>
+
+
                             </tr>
                         </tbody>
                     </table>
@@ -118,32 +118,7 @@
         </div>
     </div>
 
-
 </div>
-
-
-
-
-
-
-
-
-     
-     <!-- <div class="row g-3">
-         <hr>
-
-     <div th:each="meal: ${mealsInCategory}">
-         <div class="col-8">
-             <h2 th:text="${category.name}"></h2>
-         </div>
-         <p>Here will be some info about the category</p>
-         <p><a th:href="@{'/category/' + ${category.id}}" class="btn btn-success">View Meals &raquo;</a></p>
-         <hr>
-     </div>
-
-     </div>
-
-     <hr> -->
 
 
 
