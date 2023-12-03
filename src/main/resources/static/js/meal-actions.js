@@ -7,6 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+//Delete Meal Button below 
 export function initializeDeleteButtons() {
     const deleteButtons = document.querySelectorAll("[id^='deleteBtn-']"); // Select buttons with IDs starting with 'deleteBtn-'
     deleteButtons.forEach((button) => {
@@ -28,7 +29,7 @@ export function initializeDeleteButtons() {
                     },
                 });
                 if (response.ok) {
-                    const closestTR = button.closest("tr");
+                    const closestTR = button.closest("tr"); //gets closest tableRow and deletes it have to redo it for accordion
                     if (closestTR) {
                         closestTR.remove();
                     }
@@ -43,4 +44,5 @@ export function initializeDeleteButtons() {
         }));
     });
 }
+//Delete Meal Button above
 //# sourceMappingURL=meal-actions.js.map

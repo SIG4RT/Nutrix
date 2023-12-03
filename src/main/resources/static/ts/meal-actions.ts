@@ -25,7 +25,7 @@ export function initializeDeleteButtons() {
                 });
 
                 if (response.ok) {
-                    const closestTR = button.closest("tr");
+                    const closestTR = button.closest("tr");     //gets closest tableRow and deletes it, have to redo it for accordion
                     if (closestTR) {
                         closestTR.remove();
                     }
