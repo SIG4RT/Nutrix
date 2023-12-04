@@ -1,7 +1,7 @@
 <!-- Checks device type and changes format accordingly -->
 <!-- Placeholder represents a list of meals -->
 <div th:fragment="meals (PLACEHOLDER)">
-    <div class="mobile-content">
+    <div class="mobile-content nutrix-width">
         <div class="col-12 col-md-6 col-lg-4" th:each="meal: ${PLACEHOLDER}">
             <div class="card">
                 <div class="card-body">
@@ -36,7 +36,7 @@
         </div>
     </div>
     <div class="desktop-content">
-        <div class="container mt-4">
+        <div class="container mt-4 nutrix-width">
             <div class="row">
                 <div class="col-12">
                     <div class="table-responsive">
