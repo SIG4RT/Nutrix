@@ -1,3 +1,4 @@
-import { initializeDeleteButtons } from './meal-actions.js';
+import { deleteButtonForTableRow, deleteButtonForAccordion } from './meal-actions.js';
 
-initializeDeleteButtons();
+deleteButtonForTableRow();
+deleteButtonForAccordion();
