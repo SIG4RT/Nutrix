@@ -64,7 +64,7 @@ public class MealService {
     }
 
 
-    public Double getTotalCaloriesByCategoryId(long id) {
+    public Integer getTotalCaloriesByCategoryId(long id) {
         return repository.getTotalCaloriesByCategoryId(id);
     }
 

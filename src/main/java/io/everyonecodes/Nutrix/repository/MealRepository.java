@@ -18,7 +18,7 @@ public interface MealRepository extends JpaRepository<Meal, Long> {
     List<Meal> findByCategoriesId(Long categoryId);
 
     @Query("SELECT SUM(m.calories) FROM Meal m JOIN m.categories c WHERE c.id = :categoryId")
-    Double getTotalCaloriesByCategoryId(@Param("categoryId") Long categoryId);
+    Integer getTotalCaloriesByCategoryId(@Param("categoryId") Long categoryId);
 
     @Query("SELECT SUM(m.carbs) FROM Meal m JOIN m.categories c WHERE c.id = :categoryId")
     Double getTotalCarbsByCategoryId(@Param("categoryId") Long categoryId);

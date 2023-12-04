@@ -76,62 +76,68 @@
 
 <!-- Meals Section -->
 
-    <div class="accordion bg-dark" id="mealAccordion" th:each="meal, iterStat : ${mealsInCategory}">
-        <div class="accordion-item">
+    <!-- Meal NOT collapsed-->
+    <div th:each="meal, iterStat : ${mealsInCategory}">
+        <div class="accordion bg-light" id="mealAccordion">
+            <div class="accordion-item">
 
-            <h2 class="accordion-header">
-                <button class="accordion-button collapsed bg-light text-dark" 
-                        type="button"
-                        data-bs-toggle="collapse"
-                        th:data-bs-target="'#collapse' + ${iterStat.index}"
-                        aria-expanded="true" aria-controls="'collapse' + ${iterStat.index}">
-                        
-                    <div class="container-fluid">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed bg-light text-dark" 
+                            type="button"
+                            data-bs-toggle="collapse"
+                            th:data-bs-target="'#collapse' + ${iterStat.index}"
+                            aria-expanded="true" aria-controls="'collapse' + ${iterStat.index}">
+                            
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col">
+                                    <p th:text="${meal.name}" class="mb-0"></p>
+                                </div>
+                                <div class="col text-end">
+                                    <p th:text="${meal.calories} + kcal" class="mb-0"></p>
+                                </div>
+                            </div>
+                        </div>
+                
+                    </button>
+                </h2>    
+
+        <!-- Meal collapsed-->
+                <div th:id="'collapse' + ${iterStat.index}" class="accordion-collapse collapse" data-bs-parent="#mealAccordion">
+                    <div class="accordion-body position-relative">
+                
                         <div class="row">
+                            <!-- Text column -->
                             <div class="col">
-                                <p th:text="${meal.name}" class="mb-0"></p>
+                                <div th:text="Carbs + ': ' + ${meal.carbs}" class="my-auto"></div>
+                                <div th:text="Protein + ': ' + ${meal.protein}" class="my-auto"></div>
+                                <div th:text="Fat + ': ' + ${meal.fat}" class="my-auto"></div>
                             </div>
-                            <div class="col text-end">
-                                <p th:text="${meal.calories} + kcal" class="mb-0"></p>
+                            <!-- Button column -->
+                            <div class="col-auto mt-3">
+                                <div class="dropdown text-end">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Option
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-dark">
+                                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a></li>
+                                        <li><a class="dropdown-item" href="#">Edit</a></li>
+                                    </ul>
+                                    <div th:insert="/fragments/deletemodal :: deletemodal"></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-            
-                </button>
-            </h2>
 
-            <div th:id="'collapse' + ${iterStat.index}" class="accordion-collapse collapse" data-bs-parent="#mealAccordion">
-                <div class="accordion-body position-relative">
-            
-                    <div class="row">
-                        <!-- Text column -->
-                        <div class="col">
-                            <div th:text="Carbs + ': ' + ${meal.carbs}" class="my-auto"></div>
-                            <div th:text="Protein + ': ' + ${meal.protein}" class="my-auto"></div>
-                            <div th:text="Fat + ': ' + ${meal.fat}" class="my-auto"></div>
-                        </div>
-                        <!-- Button column -->
-                        <div class="col-auto mt-3">
-                            <div class="dropdown text-end">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Option
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="#" th:id="'deleteBtnAcc-' + ${meal.id}">Delete</a></li>
-                                    <li><a class="dropdown-item" href="#">Edit</a></li>
-                                </ul>
-                            </div>
-                        </div>
                     </div>
-
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
     <br>
 
 </div>
+
 
 
 

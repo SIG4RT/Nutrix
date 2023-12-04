@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 //Delete meal and remove table row
 export function deleteButtonForTableRow() {
-    const deleteButtons = document.querySelectorAll("[id^='deleteBtnTr-']"); // Select buttons with IDs starting with 'deleteBtn-'
+    const deleteButtons = document.querySelectorAll("[id^='deleteBtnTr-']"); // Select buttons with IDs starting with 'deleteBtnTr-'
     deleteButtons.forEach((button) => {
         button.addEventListener("click", () => __awaiter(this, void 0, void 0, function* () {
             const mealId = button.id.replace("deleteBtnTr-", ""); // Extract meal ID from the button ID
@@ -52,10 +52,6 @@ export function deleteButtonForAccordion() {
             const mealId = button.id.replace("deleteBtnAcc-", ""); // Extract meal ID from the button ID
             if (!mealId) {
                 console.error("Meal ID is null or undefined");
-                return;
-            }
-            const confirmDelete = confirm("Are you sure you want to delete this meal?");
-            if (!confirmDelete) {
                 return;
             }
             try {
