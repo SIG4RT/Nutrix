@@ -1,7 +1,9 @@
 package io.everyonecodes.Nutrix.repository;
 
 import io.everyonecodes.Nutrix.entity.Meal;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -16,6 +18,12 @@ public interface MealRepository extends JpaRepository<Meal, Long> {
     List<Meal> findByIsFavoriteTrue();
 
     List<Meal> findByCategoriesId(Long categoryId);
+
+
+    @Modifying
+    @Transactional
+    @Query("DELETE FROM Meal m WHERE :categoryId IN (SELECT c.id FROM m.categories c)")
+    void deleteByCategoryId(@Param("categoryId") Long categoryId);
 
     @Query("SELECT SUM(m.calories) FROM Meal m JOIN m.categories c WHERE c.id = :categoryId")
     Integer getTotalCaloriesByCategoryId(@Param("categoryId") Long categoryId);

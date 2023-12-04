@@ -63,6 +63,10 @@ public class MealService {
         repository.deleteById(id);
     }
 
+    public void deleteByCategoryId(long id) {
+        repository.deleteByCategoryId(id);
+    }
+
 
     public Integer getTotalCaloriesByCategoryId(long id) {
         return repository.getTotalCaloriesByCategoryId(id);

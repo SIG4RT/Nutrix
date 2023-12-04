@@ -63,4 +63,9 @@ public class MealController {
     public void delete(@PathVariable long id) {
         service.delete(id);
     }
+
+    @DeleteMapping("/meals/{categoryId}")
+    public void deleteByCategoryId(@PathVariable long categoryId) {
+        service.deleteByCategoryId(categoryId);
+    }
 }

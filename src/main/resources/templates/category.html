@@ -20,7 +20,7 @@
 <!-- Total Stats Section -->
 <div class="container nutrix-width mt-4 justify-content-center">
 
-    <div class="p-5 my-4 bg-light rounded-5 text-center">
+    <div class="p-5 my-4 bg-secondary-subtle rounded-5 text-center">
         <h1 class="display-4" th:text="${category.name.substring(0,1).toUpperCase() + category.name.substring(1,category.name.length).toLowerCase()}"></h1>
 
 
@@ -73,6 +73,24 @@
 
         </div>
     </div>
+
+
+<!-- Buttons -->
+        <div class="p-3 mb-4 bg-light rounded-3 text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <button class="btn btn-danger">Delete All</button>
+                    </div>
+                    <div class="col-5">
+                        <button class="btn btn-success">Add Meal</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
 
 <!-- Meals Section -->
 
@@ -140,6 +158,17 @@
 
 
 
+
+
+
+
+<!-- Show toast when deleting -->
+<span th:insert="fragments/delete-toast :: delete-toast"></span>
+<script th:inline="javascript">
+    function showDeleteToast() {
+        $('.toast').toast('show');
+    }
+</script>
 
 
 
