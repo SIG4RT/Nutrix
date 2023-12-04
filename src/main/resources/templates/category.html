@@ -31,7 +31,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-secondary">Calories</h5>
                         <p class="card-text">
-                            <span class="font-weight-bold" th:text="${totalCalories}"></span>
+                            <span class="font-weight-bold" th:text="${totalCalories != null ? totalCalories + ' kcal' : 0}"></span>
                         </p>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-secondary">Carbs</h5>
                         <p class="card-text">
-                            <span class="font-weight-bold" th:text="${totalCarbs} + g"></span>
+                            <span class="font-weight-bold" th:text="${totalCarbs != null ? totalCarbs + ' g' : 0}"></span>
                         </p>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-secondary">Protein</h5>
                         <p class="card-text">
-                            <span class="font-weight-bold" th:text="${totalProtein} + g"></span>
+                            <span class="font-weight-bold" th:text="${totalProtein != null ? totalProtein + ' g' : 0}"></span>
                         </p>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-secondary">Fat</h5>
                         <p class="card-text">
-                            <span class="font-weight-bold" th:text="${totalFat} + g"></span>
+                            <span class="font-weight-bold" th:text="${totalFat != null ? totalFat + ' g' : 0}"></span>
                         </p>
                     </div>
                 </div>
@@ -120,10 +120,10 @@
                                         Option
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-dark">
-                                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a></li>
+                                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" th:data-bs-target="'#deleteModal-' + ${meal.id}">Delete</a></li>
                                         <li><a class="dropdown-item" href="#">Edit</a></li>
                                     </ul>
-                                    <div th:insert="/fragments/deletemodal :: deletemodal"></div>
+                                    <span th:insert="fragments/delete-modal :: delete-modal"></span>                                   
                                 </div>
                             </div>
                         </div>
