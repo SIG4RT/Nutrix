@@ -20,9 +20,9 @@
 <!-- Total Stats Section -->
 <div class="container nutrix-width mt-4 justify-content-center">
 
-    <div class="p-5 my-4 bg-secondary-subtle rounded-5 text-center">
-        <h1 class="display-4" th:text="${category.name.substring(0,1).toUpperCase() + category.name.substring(1,category.name.length).toLowerCase()}"></h1>
+    <div class="p-5 mb-4 bg-secondary-subtle rounded-5 text-center position-relative">
 
+        <h1 class="display-4" th:text="${category.name.substring(0,1).toUpperCase() + category.name.substring(1,category.name.length).toLowerCase()}"></h1>
 
         <div class="row mt-3 justify-content-center">
 
@@ -31,7 +31,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-secondary">Calories</h5>
                         <p class="card-text">
-                            <span class="font-weight-bold" th:text="${totalCalories != null ? totalCalories + ' kcal' : 0}"></span>
+                            <span class="font-weight-bold" th:text="${totalCalories != null ? totalCalories + ' kcal' : 0  + ' kcal'}"></span>
                         </p>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-secondary">Carbs</h5>
                         <p class="card-text">
-                            <span class="font-weight-bold" th:text="${totalCarbs != null ? totalCarbs + ' g' : 0}"></span>
+                            <span class="font-weight-bold" th:text="${totalCarbs != null ? totalCarbs + ' g' : 0  + ' g'}"></span>
                         </p>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-secondary">Protein</h5>
                         <p class="card-text">
-                            <span class="font-weight-bold" th:text="${totalProtein != null ? totalProtein + ' g' : 0}"></span>
+                            <span class="font-weight-bold" th:text="${totalProtein != null ? totalProtein + ' g' : 0  + ' g'}"></span>
                         </p>
                     </div>
                 </div>
@@ -65,18 +65,27 @@
                     <div class="card-body">
                         <h5 class="card-title text-secondary">Fat</h5>
                         <p class="card-text">
-                            <span class="font-weight-bold" th:text="${totalFat != null ? totalFat + ' g' : 0}"></span>
+                            <span class="font-weight-bold" th:text="${totalFat != null ? totalFat + ' g' : 0  + ' g'}"></span>
                         </p>
                     </div>
                 </div>
             </div>
 
+            <hr class="mt-4 mb-4">
         </div>
+
+            <!-- Add button -->
+        <div class="col-md-12 mt-4">
+            <a href="">
+                <img th:src="@{/img/plus-black.png}" alt="Nutrix" width="70" height="70" class="position-absolute bottom-0 start-50 translate-middle-x mb-3">
+            </a>
+        </div>
+
     </div>
 
 
 <!-- Buttons -->
-        <div class="p-3 mb-4 bg-light rounded-3 text-center">
+        <!-- <div class="p-3 mb-4 bg-light rounded-3 text-center">
             <div class="container">
                 <div class="row">
                     <div class="col-6">
@@ -87,7 +96,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
 
@@ -155,6 +164,10 @@
     <br>
 
 </div>
+
+
+  
+  
 
 
 

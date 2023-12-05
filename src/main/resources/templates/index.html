@@ -18,12 +18,12 @@
     <div th:insert="/fragments/navbar :: navbar"></div>
 
     
-    <div class="container nutrix-width">
+    <div class="container nutrix-width mt-4 justify-content-center">
 
         <!-- Overview start -->
-        <div class="p-5 my-4 bg-light rounded-5 text-center">
+        <div class="p-5 mb-4 bg-secondary-subtle rounded-5 text-center position-relative">
+
             <h1 class="display-4">Overview</h1>
-    
     
             <div class="row mt-3 justify-content-center">
     
@@ -32,7 +32,7 @@
                         <div class="card-body">
                             <h5 class="card-title text-secondary">Calories</h5>
                             <p class="card-text">
-                                <p class="font-weight-bold">2200 kcal</p>
+                                <span class="font-weight-bold">2136 kcal</span>
                             </p>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
                         <div class="card-body">
                             <h5 class="card-title text-secondary">Carbs</h5>
                             <p class="card-text">
-                                <p class="font-weight-bold">180.2 g</p>
+                                <span class="font-weight-bold">211.6 g</span>
                             </p>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                         <div class="card-body">
                             <h5 class="card-title text-secondary">Protein</h5>
                             <p class="card-text">
-                                <p class="font-weight-bold">150.8 g</p>
+                                <span class="font-weight-bold"> 186.9 g</span>
                             </p>
                         </div>
                     </div>
@@ -66,28 +66,32 @@
                         <div class="card-body">
                             <h5 class="card-title text-secondary">Fat</h5>
                             <p class="card-text">
-                                <p class="font-weight-bold">70.0 g</p>
+                                <span class="font-weight-bold">60.3 g</span>
                             </p>
                         </div>
                     </div>
                 </div>
     
+                <hr class="mt-4 mb-4">
             </div>
+    
         </div>
+
+
+        <hr class="mb-4">
         <!-- Overview end -->
 
 
     
-        <div class="row g-2">
-            <hr>
-        <div th:each="category: ${allCategories}">
-            <div>
-                <h2 th:text="${category.name.substring(0,1).toUpperCase() + category.name.substring(1,category.name.length).toLowerCase()}"></h2>
+        <div class="row g-2 bg-light rounded-5 p-5">
+            <div th:each="category: ${allCategories}">
+                <div>
+                    <h2 th:text="${category.name.substring(0,1).toUpperCase() + category.name.substring(1,category.name.length).toLowerCase()}"></h2>
+                </div>
+                <p>Here will be some info about the category</p>
+                <p><a th:href="@{'/category/' + ${category.id}}" class="btn btn-dark">View Meals &raquo;</a></p>
+                <hr>
             </div>
-            <p>Here will be some info about the category</p>
-            <p><a th:href="@{'/category/' + ${category.id}}" class="btn btn-success">View Meals &raquo;</a></p>
-            <hr>
-        </div>
         </div>
         <hr>
 

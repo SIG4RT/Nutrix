@@ -10,8 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class WebController {
 
-    private MealService mealService;
-    private CategoryService categoryService;
+    private final MealService mealService;
+    private final CategoryService categoryService;
 
     public WebController(MealService mealService, CategoryService categoryService) {
         this.mealService = mealService;

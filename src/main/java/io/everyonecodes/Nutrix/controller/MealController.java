@@ -14,58 +14,58 @@ public class MealController {
 
     private final MealService service;
 
-    public MealController(MealService service) {
+    MealController(MealService service) {
         this.service = service;
     }
 
 
     @GetMapping("/allmeals")
-    public List<Meal> getAll() {
+    List<Meal> getAll() {
         return service.getAll();
     }
 
     @GetMapping("/meal/{id}")
-    public Meal getById(@PathVariable long id) {
+    Meal getById(@PathVariable long id) {
         return service.getById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     @GetMapping("/mealcategory")
-    public List<Meal> getMealsByCategoryId(@PathVariable long categoryId) {
+    List<Meal> getMealsByCategoryId(@PathVariable long categoryId) {
         return service.getMealsByCategoryId(categoryId);
     }
 
     @GetMapping("recentmeals")
-    public List<Meal> getLast20Meals() {
+    List<Meal> getLast20Meals() {
         return service.getLast20Meals();
     }
 
     @GetMapping("/favoritemeals")
-    public List<Meal> getFavorites() {
+    List<Meal> getFavorites() {
         return service.getFavorites();
     }
 
     @PostMapping("/meal")
-    public Meal createOne(@RequestBody Meal meal) {
+    Meal createOne(@RequestBody Meal meal) {
         return service.createOne(meal);
     }
 
     @PostMapping("/meals")
-    public List<Meal> createAll(@RequestBody List<Meal> meals) {
+    List<Meal> createAll(@RequestBody List<Meal> meals) {
         return service.createAll(meals);
     }
 
     @PutMapping("/meal/{id}")
-    public Meal createOrReplace(@RequestBody Meal meal, @PathVariable long id) {
+    Meal createOrReplace(@RequestBody Meal meal, @PathVariable long id) {
         return service.createOrReplace(meal, id);
     }
 
     @DeleteMapping("/meal/{id}")
-    public void delete(@PathVariable long id) {
+    void delete(@PathVariable long id) {
         service.delete(id);
     }
 
     @DeleteMapping("/meals/{categoryId}")
-    public void deleteByCategoryId(@PathVariable long categoryId) {
+    void deleteByCategoryId(@PathVariable long categoryId) {
         service.deleteByCategoryId(categoryId);
     }
 }
