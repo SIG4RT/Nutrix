@@ -89,4 +89,10 @@ public class WebController {
         ModelAndView mav = new ModelAndView("misc/privacypolicy");
         return mav;
     }
+
+    @GetMapping("/misc/test")
+    public ModelAndView getTest() {
+        ModelAndView mav = new ModelAndView("misc/test");
+        return mav;
+    }
 }
