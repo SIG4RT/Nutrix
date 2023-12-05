@@ -6,36 +6,188 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bootstrap Offcanvas Example</title>
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-beta1/css/bootstrap.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+
 </head>
+
 <body>
 
 
 
-  <div class="container mt-5">
 
-    <div class="position-fixed top-0 start-0" style="z-index: 1000">
-    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-      <i class="bi bi-list"></i>
-    </button>
+
+
+
+
+
+  <div th:insert="/fragments/navbar :: navbar"></div>
+
+    
+  <div class="container nutrix-width mt-4 justify-content-center">
+
+      <!-- Overview start -->
+      <div class="p-5 mb-4 bg-secondary-subtle rounded-5 text-center position-relative">
+
+          <h1 class="display-4">Overview</h1>
+  
+          <div class="row mt-3 justify-content-center">
+  
+              <div class="col-md-3">
+                  <div class="card bg-light shadow">
+                      <div class="card-body">
+                          <h5 class="card-title text-secondary">Calories</h5>
+                          <p class="card-text">
+                              <span class="font-weight-bold">2136 kcal</span>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+  
+              
+              <div class="col-md-3">
+                  <div class="card bg-light shadow">
+                      <div class="card-body">
+                          <h5 class="card-title text-secondary">Carbs</h5>
+                          <p class="card-text">
+                              <span class="font-weight-bold">211.6 g</span>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+  
+              <div class="col-md-3">
+                  <div class="card bg-light shadow">
+                      <div class="card-body">
+                          <h5 class="card-title text-secondary">Protein</h5>
+                          <p class="card-text">
+                              <span class="font-weight-bold"> 186.9 g</span>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+  
+              <div class="col-md-3">
+                  <div class="card bg-light shadow">
+                      <div class="card-body">
+                          <h5 class="card-title text-secondary">Fat</h5>
+                          <p class="card-text">
+                              <span class="font-weight-bold">60.3 g</span>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+
+
+              <div class="container">
+                <div id="fixedImage" class="position-absolute top-50 start-0 translate-middle-y">
+                    <a class="btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                        <img th:src="@{/img/arrowhead-right.png}" alt="Toggle Sidebar" width="20" height="20">
+                    </a>
+                </div>
+              
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <p>This is some text inside the Offcanvas component. You can replace this with your own content.</p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Test item 1</li>
+                            <li class="list-group-item">Test item 2</li>
+                            <li class="list-group-item">Test item 3</li>
+                        </ul>
+                    </div>
+                </div>
+              </div>
+
+
+
+
+  
+              <hr class="mt-4 mb-4">
+          </div>
+  
+      </div>
+
+
+      <hr class="mb-4">
+      <!-- Overview end -->
+
+
+  
+      <div class="row g-2 bg-light rounded-5 p-5">
+          <div th:each="category: ${allCategories}">
+              <div>
+                  <h2 th:text="${category.name.substring(0,1).toUpperCase() + category.name.substring(1,category.name.length).toLowerCase()}"></h2>
+              </div>
+              <p>Here will be some info about the category</p>
+              <p><a th:href="@{'/category/' + ${category.id}}" class="btn btn-dark">View Meals &raquo;</a></p>
+              <hr>
+          </div>
+      </div>
+      <hr>
+
+
+
+      <div th:insert="fragments/footer :: footer"></div>
+
+
+
+
+
+
+
+  <!-- <div class="container">
+    <div class="position-fixed top-50 start-0 translate-middle-y">
+        <a class="btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+            <img th:src="@{/img/arrowhead-right.png}" alt="Toggle Sidebar" width="20" height="20">
+        </a>
     </div>
 
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-              <p>This is some text inside the Offcanvas component. You can replace this with your own content.</p>
-              <ul class="list-group list-group-flush">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <p>This is some text inside the Offcanvas component. You can replace this with your own content.</p>
+            <ul class="list-group list-group-flush">
                 <li class="list-group-item">Test item 1</li>
                 <li class="list-group-item">Test item 2</li>
                 <li class="list-group-item">Test item 3</li>
-              </ul>
-          </div>
+            </ul>
+        </div>
+    </div>
+</div> -->
+
+
+
+
+<!-- <div class="container">
+  <div id="fixedImage" class="position-absolute top-50 start-0 translate-middle-y">
+      <a class="btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+          <img th:src="@{/img/arrowhead-right.png}" alt="Toggle Sidebar" width="20" height="20">
+      </a>
+  </div>
+
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+          <p>This is some text inside the Offcanvas component. You can replace this with your own content.</p>
+          <ul class="list-group list-group-flush">
+              <li class="list-group-item">Test item 1</li>
+              <li class="list-group-item">Test item 2</li>
+              <li class="list-group-item">Test item 3</li>
+          </ul>
       </div>
   </div>
+</div> -->
+
 
 
 
@@ -45,6 +197,13 @@
           return new bootstrap.Offcanvas(offcanvasEl)
       })
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script> 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script type="module" src="/js/main.js"></script>
+<script type="module" src="/js/meal-actions.js"></script>
 </body>
+
 </html>

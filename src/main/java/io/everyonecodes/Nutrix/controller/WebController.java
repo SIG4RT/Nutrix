@@ -93,6 +93,7 @@ public class WebController {
     @GetMapping("/misc/test")
     public ModelAndView getTest() {
         ModelAndView mav = new ModelAndView("misc/test");
+        mav.addObject("allCategories", categoryService.getAll());
         return mav;
     }
 }

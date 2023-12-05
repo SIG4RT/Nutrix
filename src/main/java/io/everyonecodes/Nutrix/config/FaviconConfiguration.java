@@ -1,4 +1,4 @@
-package io.everyonecodes.Nutrix;
+package io.everyonecodes.Nutrix.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
